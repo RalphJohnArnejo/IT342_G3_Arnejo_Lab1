@@ -6,12 +6,14 @@
 - [x] Spring Boot Backend Initialization
 - [x] MySQL Database Creation (user_auth_db)
 - [x] User Entity and Database Table Generation
+- [x] Implement AuthController for Registration
+- [x] Add BCrypt Password Encryption
+- [x] Create Frontend (Web) Registration Form
 
 ## IN PROGRESS
-- [ ] Implement AuthController for Registration
-- [ ] Add BCrypt Password Encryption
+- [/] Create Frontend (Web) Login Form
 
 ## TO DO
-- [ ] Create Frontend (Web) Login Form
+- [ ] Implement Login Endpoint (Backend)
 - [ ] Create Mobile Login Screen
 - [ ] Final Lab Documentation
