@@ -18,12 +18,12 @@
 - [x] Web: Dashboard/Profile Page (Protected) — `d03bc3b`
 - [x] Web: Logout Functionality — `d03bc3b`
 - [x] Update README.md — `d03bc3b`
+- [x] Create Mobile Login Screen (Session 3)
+- [x] Create Mobile Registration Screen (Session 3)
+- [x] Create Dashboard Screen (Session 3)
 
 ## IN PROGRESS
-- [/] FRS Documentation (ERD, UML, Screenshots in /docs)
-- [/] Unified Project Structure (Cleaned Nested Folders) — Structure fixed, final push pending.
+- 
 
 ## TO DO
-- [ ] Create Mobile Login Screen (Session 3)
-- [ ] Create Mobile Registration Screen (Session 3)
-- [ ] Final Lab Documentation
+- Improve UI design for both web and mobile
