@@ -6,9 +6,13 @@ data class UserRequest(
     val password: String
 )
 
-// Data received from the backend (if you use JWT)
+// Data received from the backend during login
 data class LoginResponse(
     val token: String? = null,
     val message: String? = null
 )
 
+// ADD THIS: Data received from the backend during registration
+data class RegisterResponse(
+    val message: String? = null
+)
