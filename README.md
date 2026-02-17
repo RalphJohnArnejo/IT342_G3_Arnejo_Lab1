@@ -1,7 +1,7 @@
 # IT342 - User Registration and Authentication System
 **Name:** Ralph John Arnejo  
 **Group:** G3  
-**Lab:** Laboratory 1 (Session 1)
+**Lab:** Laboratory 2 (Session 2)
 
 ---
 
@@ -16,7 +16,7 @@ A full-stack user registration and authentication system built with Spring Boot 
 | Backend  | Java 17, Spring Boot 4.1, Spring Security, Spring Data JPA |
 | Database | MySQL 8 (`user_auth_db`)           |
 | Web App  | ReactJS (Vite), React Router DOM   |
-| Mobile   | *(Session 2)*                      |
+| Mobile   | *(Session 3)*                      |
 | Others   | BCrypt Password Encryption, Maven  |
 
 ## Steps to Run Backend
