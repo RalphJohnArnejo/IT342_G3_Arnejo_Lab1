@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,10 +21,9 @@ class RegisterActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                // onRegisterSuccess is called when the backend returns a 200 OK
                 RegisterScreen(
                     onRegisterSuccess = { finish() },
-                    onBackToLogin = { finish() } // Added to handle manual navigation back
+                    onBackToLogin = { finish() }
                 )
             }
         }
@@ -49,16 +49,18 @@ fun RegisterScreen(onRegisterSuccess: () -> Unit, onBackToLogin: () -> Unit) {
             val authService = RetrofitClient.instance.create(AuthService::class.java)
             val registerRequest = UserRequest(username, password)
 
-            authService.register(registerRequest).enqueue(object : Callback<RegisterResponse> {
-                override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+            // Updated to handle ResponseBody to prevent the BEGIN_OBJECT crash
+            authService.register(registerRequest).enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
                         Toast.makeText(context, "Registration Successful!", Toast.LENGTH_SHORT).show()
                         onRegisterSuccess()
                     } else {
-                        Toast.makeText(context, "Username might be taken", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Username might be taken or error occurred", Toast.LENGTH_SHORT).show()
                     }
                 }
-                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Toast.makeText(context, "Network Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
@@ -66,7 +68,6 @@ fun RegisterScreen(onRegisterSuccess: () -> Unit, onBackToLogin: () -> Unit) {
             Text("Register")
         }
 
-        // --- NEW BACK TO LOGIN BUTTON ---
         Spacer(modifier = Modifier.height(8.dp))
 
         TextButton(

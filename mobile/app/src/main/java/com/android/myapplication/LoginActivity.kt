@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,19 +52,18 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             val authService = RetrofitClient.instance.create(AuthService::class.java)
             val loginRequest = UserRequest(username, password)
 
-            authService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+            authService.login(loginRequest).enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
-                        val sharedPref = context.getSharedPreferences("DormShare", Context.MODE_PRIVATE)
-                        sharedPref.edit().putString("token", response.body()?.token).apply()
-
+                        // Even if the response is a string, success means we navigate
                         Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
                         onLoginSuccess()
                     } else {
                         Toast.makeText(context, "Invalid Credentials", Toast.LENGTH_SHORT).show()
                     }
                 }
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
