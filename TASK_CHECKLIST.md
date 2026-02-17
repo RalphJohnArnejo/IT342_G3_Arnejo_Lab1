@@ -1,4 +1,4 @@
-# Lab 1 Task Checklist - Ralph John Arnejo
+# Lab 2 Task Checklist - Ralph John Arnejo
 
 ## DONE
 - [x] Project structure setup (web, backend, mobile, docs) — `bed147c`
@@ -23,6 +23,6 @@
 - [/] FRS Documentation (ERD, UML, Screenshots in /docs)
 
 ## TO DO
-- [ ] Create Mobile Login Screen (Session 2)
-- [ ] Create Mobile Registration Screen (Session 2)
+- [ ] Create Mobile Login Screen (Session 3)
+- [ ] Create Mobile Registration Screen (Session 3)
 - [ ] Final Lab Documentation
