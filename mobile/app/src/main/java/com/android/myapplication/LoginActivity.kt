@@ -54,7 +54,6 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             authService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                     if (response.isSuccessful) {
-                        // REQUIREMENT: Save Token to satisfy Protected Dashboard requirement
                         val sharedPref = context.getSharedPreferences("DormShare", Context.MODE_PRIVATE)
                         sharedPref.edit().putString("token", response.body()?.token).apply()
 
@@ -71,5 +70,17 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         }, modifier = Modifier.fillMaxWidth()) {
             Text("Login")
         }
+
+        // --- NEW REGISTER BUTTON ADDED HERE ---
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedButton(onClick = {
+            // This opens your new Registration screen
+            val intent = Intent(context, RegisterActivity::class.java)
+            context.startActivity(intent)
+        }, modifier = Modifier.fillMaxWidth()) {
+            Text("Create Account")
+        }
+        // --------------------------------------
     }
 }
