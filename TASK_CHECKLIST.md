@@ -21,6 +21,7 @@
 
 ## IN PROGRESS
 - [/] FRS Documentation (ERD, UML, Screenshots in /docs)
+- [/] Unified Project Structure (Cleaned Nested Folders) — Structure fixed, final push pending.
 
 ## TO DO
 - [ ] Create Mobile Login Screen (Session 3)
